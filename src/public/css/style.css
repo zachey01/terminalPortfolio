@@ -1,0 +1,169 @@
+body {
+  font-size: 15px;
+  /* background-color: #000; */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.commandName {
+  color: plum;
+}
+.avatar {
+  margin-left: 50px;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+#terminal {
+  font-family: monospace;
+  /* background-color: #000; */
+  color: #fff;
+  padding: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  width: 50%;
+  height: 500px;
+  /* Фиксированная высота */
+  overflow-y: auto;
+  /* Добавляем прокрутку при необходимости */
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  /* backdrop-filter: blur(10px); */
+  position: absolute;
+  /* Добавляем позиционирование */
+  left: 50%;
+  /* Располагаем по середине по горизонтали */
+  top: 50%;
+  /* Располагаем по середине по вертикали */
+  transform: translate(-50%, -50%);
+
+  /* Добавляем курсор перемещения */
+  height: 90%;
+  width: 90%;
+}
+
+#output {
+  margin-bottom: 10px;
+}
+
+#input {
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+#prompt {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#cmd {
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  transition: caret-color 0.3s ease;
+  width: 70%;
+}
+
+#cmd:focus {
+  caret-color: white;
+}
+
+#suggestions {
+  margin-top: 10px;
+  color: white;
+}
+
+.selected {
+  color: aqua;
+}
+
+.ownerTerminal {
+  color: rgb(90, 187, 154);
+}
+
+@keyframes destroyAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0.2;
+  }
+}
+
+img {
+  user-select: none;
+}
+
+model-viewer {
+  width: 1200px;
+  height: 1200px;
+  margin: 0 auto;
+  position: absolute;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: -20%;
+  left: 0;
+  bottom: 20%;
+  right: 0;
+  text-align: center;
+  z-index: -100;
+}
+
+/* Taskbar styles */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+.taskbar-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  margin-right: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.taskbar-icon img {
+  color: white;
+}
+
+.taskbar-icon:hover {
+  background-color: #bbb;
+}
+
+.gradientChar {
+  background-image: linear-gradient(to right, #ff0000, #00ff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

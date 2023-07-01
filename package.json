@@ -1,0 +1,34 @@
+{
+  "name": "terminalportfolio",
+  "version": "0.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "npx nodemon",
+    "start:production": "npm run build && node build/index.js",
+    "start:watch": "npx nodemon scripts/build && nodemon build/index.js",
+    "test": "",
+    "build": "node scripts/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zachey01/terminalPortfolio.git"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.1",
+    "child_process": "^1.0.2",
+    "fs-extra": "^11.1.1",
+    "prettier": "2.8.8"
+  },
+  "license": "MIT",
+  "author": "Zachey"
+}
