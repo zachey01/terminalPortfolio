@@ -8,8 +8,7 @@ body {
   background-color: #2d0922;
   background-size: 100%;
   position: relative;
-  overflow: hidden;
-  margin: 30px;
+  margin: 10px;
 }
 .inlineContainer {
   display: inline-flex;
@@ -26,16 +25,7 @@ body {
 #terminal {
   font-family: monospace;
   color: blanchedalmond;
-  padding: 20px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: 50%;
-  overflow: hidden;
-  overflow-y: auto;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  height: 96%;
+  height: 95%;
   width: 95%;
 }
 #output {

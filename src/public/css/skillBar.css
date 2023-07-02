@@ -46,6 +46,18 @@ body .container .flex {
   background: blanchedalmond;
   animation: slide6 2s ease-in-out;
 }
+.skillBarItem7 {
+  width: 5%;
+  height: 30px;
+  background: blanchedalmond;
+  animation: slide7 2s ease-in-out;
+}
+.skillBarItem8 {
+  width: 5%;
+  height: 30px;
+  background: blanchedalmond;
+  animation: slide7 2s ease-in-out;
+}
 
 @keyframes slide1 {
   from {
@@ -93,5 +105,21 @@ body .container .flex {
   }
   to {
     width: 15%;
+  }
+}
+@keyframes slide7 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5%;
+  }
+}
+@keyframes slide8 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5%;
   }
 }

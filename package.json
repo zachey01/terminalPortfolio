@@ -6,8 +6,7 @@
     "start:dev": "npx nodemon",
     "start:production": "npm run build && node build/index.js",
     "start:watch": "npx nodemon scripts/build && nodemon build/index.js",
-    "test": "",
-    "build": "node scripts/build"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,16 @@
     "@vercel/ncc": "^0.36.1",
     "child_process": "^1.0.2",
     "fs-extra": "^11.1.1",
-    "prettier": "2.8.8"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "prettier": "2.8.8",
+    "sass": "^1.63.6"
   },
   "license": "MIT",
   "author": "Zachey"
