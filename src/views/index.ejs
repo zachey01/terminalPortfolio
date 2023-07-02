@@ -4,27 +4,14 @@
     <%- include('../partials/head.ejs'); %>
   </head>
   <body>
-    <model-viewer
-      id="modelBg"
-      src="space_boi.glb"
-      seamless-poster
-      environment-image="neutral"
-      shadow-intensity="0"
-      autoplay
-      ar
-      ar-modes="webxr scene-viewer quick-look"
-      auto-rotate
-      interaction-prompt-threshold="1500"
-      enable-pan
-      rotation-per-second="35deg"
-    ></model-viewer>
-
     <div id="terminal">
       <div></div>
+      <div id="mainInfo"><%- include('../partials/mainInfo.ejs'); %></div>
       <div id="output"></div>
       <div id="input">
         <span id="prompt">
-          <span class="ownerTerminal">zachey@profile</span>:~$
+          <span class="ownerTerminal"><b>zachey@profile</b></span
+          ><b>:~$</b>
         </span>
 
         <input

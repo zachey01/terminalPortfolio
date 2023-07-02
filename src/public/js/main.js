@@ -67,17 +67,7 @@ window.addEventListener('DOMContentLoaded', function () {
   var cmdInput = document.getElementById('cmd');
   cmdInput.focus();
   var outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = `<div>
-  <pre>
-  ███████╗░█████╗░░█████╗░██╗░░██╗███████╗██╗░░░██╗
-  ╚════██║██╔══██╗██╔══██╗██║░░██║██╔════╝╚██╗░██╔╝
-  ░░███╔═╝███████║██║░░╚═╝███████║█████╗░░░╚████╔╝░
-  ██╔══╝░░██╔══██║██║░░██╗██╔══██║██╔══╝░░░░╚██╔╝░░
-  ███████╗██║░░██║╚█████╔╝██║░░██║███████╗░░░██║░░░
-  ╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝░░░╚═╝░░░
-  </pre>
-  jj
-  </div>`;
+  var mainInfoDiv = document.getElementById('mainInfo');
   var terminalDiv = document.getElementById('terminal');
 
   cmdInput.addEventListener('keypress', function (e) {
@@ -88,17 +78,64 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       outputDiv.innerHTML +=
-        "<div><span class='ownerTerminal'>zachey@profile</span>:~$ " +
+        "<div><span class='ownerTerminal'><b>zachey@profile</b></span>:<b>~$</b> " +
         cmd +
         '</div>';
 
       cmdInput.value = '';
 
-      if (cmd === 'help') {
-        outputDiv.innerHTML +=
-          "<div>Available commands: <br>[<span class='commandName'>about</span>]<br>[<span class='commandName'>links</span>]<br><br>[<span class='commandName'>clear</span>]</div>";
-      } else if (cmd === 'about') {
-        outputDiv.innerHTML += '<div>About: <br> h</div>';
+      if (cmd === 'skills' || cmd === 's') {
+        outputDiv.innerHTML += `
+        <link rel="stylesheet" href="/css/skillBar.css"> 
+        <div class="container">
+        <div class="flex">
+          <h2>HTML/EJS:</h2>
+          <div class="skillBar">
+            <div class="skillBarItem1"></div>
+          </div>
+          <h3>100%</h3>
+        </div>
+    
+        <div class="flex">
+          <h2>CSS/SCSS:</h2>
+          <div class="skillBar">
+            <div class="skillBarItem2"></div>
+          </div>
+          <h3>100%</h3>
+        </div>
+    
+        <div class="flex">
+          <h2>JS:</h2>
+          <div class="skillBar">
+            <div class="skillBarItem3"></div>
+          </div>
+          <h3>95%</h3>
+        </div>
+
+        <div class="flex">
+        <h2>TS:</h2>
+        <div class="skillBar">
+          <div class="skillBarItem4"></div>
+        </div>
+        <h3>55%</h3>
+      </div>
+
+      <div class="flex">
+      <h2>NODE.JS:</h2>
+      <div class="skillBar">
+        <div class="skillBarItem5"></div>
+      </div>
+      <h3>85%</h3>
+    </div>
+
+    <div class="flex">
+    <h2>REACT.JS:</h2>
+    <div class="skillBar">
+      <div class="skillBarItem6"></div>
+    </div>
+    <h3>15%</h3>
+  </div>
+      </div>`;
       } else if (cmd === 'hack') {
         var matrixElement = document.getElementById('hackcss');
         matrixElement.style.display = 'block';
@@ -111,6 +148,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // Здесь можно добавить код для просмотра содержимого файла text.txt
       } else if (cmd === 'clear') {
         outputDiv.innerHTML = ''; // Удаление содержимого при вводе команды "clear"
+        mainInfoDiv.innerHTML = '';
       } else {
         outputDiv.innerHTML += '<div>Not found</div>';
       }
