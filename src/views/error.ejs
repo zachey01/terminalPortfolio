@@ -1,3 +1,15 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head.ejs'); %>
+  </head>
+  <body>
+    <div id="terminal">
+      <div id="output">
+        <h1><%= message %></h1>
+        <h2><%= error.status %></h2>
+        <pre><%= error.stack %></pre>
+      </div>
+    </div>
+  </body>
+</html>

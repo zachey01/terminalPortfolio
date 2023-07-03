@@ -1,4 +1,3 @@
-var suggestions = ['help', 'about', 'links', 'hack', 'clear'];
 var currentSuggestionIndex = -1;
 
 function showSuggestions() {
@@ -8,6 +7,7 @@ function showSuggestions() {
   suggestionsDiv.innerHTML = '';
 
   if (input === '') {
+    cmdInput.classList.remove('command-entered');
     return;
   }
 
@@ -22,12 +22,15 @@ function showSuggestions() {
       cmdInput.value = suggestion;
       suggestionsDiv.innerHTML = '';
     });
-    suggestionsDiv.appendChild(suggestionDiv);
 
-    if (index === currentSuggestionIndex) {
-      suggestionDiv.classList.add('selected');
-    }
+    suggestionsDiv.appendChild(suggestionDiv);
   });
+
+  if (filteredSuggestions.length > 0) {
+    cmdInput.classList.add('command-entered');
+  } else {
+    cmdInput.classList.remove('command-entered');
+  }
 }
 
 function handleKeyDown(event) {
@@ -51,6 +54,7 @@ function handleKeyDown(event) {
       cmdInput.value = selectedSuggestion.textContent;
     }
     suggestionsDiv.innerHTML = '';
+    cmdInput.classList.remove('command-entered');
   }
 
   for (var i = 0; i < suggestionDivs.length; i++) {

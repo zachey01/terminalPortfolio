@@ -5,15 +5,13 @@
   </head>
   <body>
     <div id="terminal">
-      <div></div>
-      <div id="mainInfo"><%- include('../partials/mainInfo.ejs'); %></div>
+      <div class="projectsDiv"><%- include('../partials/projects.ejs'); %></div>
       <div id="output"></div>
       <div id="input" class="command-input">
         <span id="prompt">
           <span class="ownerTerminal"><b>zachey@profile</b></span
           ><b>:~$</b>
         </span>
-
         <input
           type="text"
           id="cmd"
@@ -21,7 +19,6 @@
           onkeydown="handleKeyDown(event)"
         />
       </div>
-
       <div id="suggestions"></div>
     </div>
   </body>

@@ -6,6 +6,7 @@ import logger from 'morgan';
 import debug from 'debug';
 import http from 'http';
 import indexRouter from './src/routes/index.js';
+import projectsRouter from './src/routes/projects.js';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './src/public')));
 
 app.use('/', indexRouter);
+app.use('/projects', projectsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -43,7 +45,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: 'Error' });
 });
 
 function onListening() {
