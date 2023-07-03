@@ -1,18 +1,25 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-let debug = require('debug')('terminalportfolio:server');
-let http = require('http');
-let indexRouter = require('./src/routes/index');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import debug from 'debug';
+import http from 'http';
+import indexRouter from './src/routes/index.js';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-require('dotenv').config();
-let port = normalizePort(process.env.PORT || '3000');
-let server = http.createServer(app);
+import ejs from 'ejs';
+
+const port = normalizePort(process.env.PORT || '3000');
+const server = http.createServer(app);
 
 app.set('port', port);
 app.set('views', path.join(__dirname, './src/views'));
+app.engine('ejs', ejs.__express);
 app.set('view engine', 'ejs');
 server.listen(port);
 server.on('error', onError);
@@ -26,11 +33,11 @@ app.use(express.static(path.join(__dirname, './src/public')));
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -40,9 +47,9 @@ app.use(function (err, req, res, next) {
 });
 
 function onListening() {
-  let addr = server.address();
-  let bind = typeof addr === 'string' ? 'pipe ' + addr : +addr.port;
-  debug('Listening on ' + bind);
+  const addr = server.address();
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : +addr.port;
+  debug('terminalportfolio:server')('Listening on ' + bind);
   console.log('Listening on port ' + '\x1b[36m%s\x1b[0m', bind);
 }
 
@@ -50,7 +57,7 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-  let bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -62,8 +69,9 @@ function onError(error) {
       throw error;
   }
 }
+
 function normalizePort(val) {
-  let port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     return val;

@@ -3,16 +3,14 @@
   "version": "0.0.0",
   "main": "app.js",
   "scripts": {
-    "start:dev": "npx nodemon",
-    "start:production": "npm run build && node build/index.js",
-    "start:watch": "npx nodemon scripts/build && nodemon build/index.js",
-    "test": ""
+    "dev": "npx nodemon",
+    "start": "npx gulp && node build/index"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/zachey01/terminalPortfolio.git"
   },
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -30,8 +28,11 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-ejs": "^5.1.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^8.0.0",
     "gulp-nodemon": "^2.5.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
     "prettier": "2.8.8",

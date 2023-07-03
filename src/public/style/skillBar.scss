@@ -1,0 +1,141 @@
+$primary-color: blanchedalmond;
+
+.container {
+  .flex {
+    display: inline-flex;
+    margin: 20px;
+  }
+}
+
+.skillBar {
+  $bar-width: 250px;
+  $bar-height: 30px;
+
+  width: $bar-width;
+  height: $bar-height;
+  border: 1px solid $primary-color;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+
+  &.skillBarItem1 {
+    width: 100%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide1 2s ease-in-out;
+  }
+
+  &.skillBarItem2 {
+    width: 100%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide2 2s ease-in-out;
+  }
+
+  &.skillBarItem3 {
+    width: 95%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide3 2s ease-in-out;
+  }
+
+  &.skillBarItem4 {
+    width: 55%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide4 2s ease-in-out;
+  }
+
+  &.skillBarItem5 {
+    width: 85%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide5 2s ease-in-out;
+  }
+
+  &.skillBarItem6 {
+    width: 15%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide6 2s ease-in-out;
+  }
+
+  &.skillBarItem7 {
+    width: 5%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide7 2s ease-in-out;
+  }
+
+  &.skillBarItem8 {
+    width: 5%;
+    height: $bar-height;
+    background: $primary-color;
+    animation: slide7 2s ease-in-out;
+  }
+}
+
+@keyframes slide1 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes slide2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes slide3 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 95%;
+  }
+}
+@keyframes slide4 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+@keyframes slide5 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 85%;
+  }
+}
+@keyframes slide6 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15%;
+  }
+}
+@keyframes slide7 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5%;
+  }
+}
+@keyframes slide8 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5%;
+  }
+}

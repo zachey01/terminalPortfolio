@@ -1,0 +1,97 @@
+$primary-color: blanchedalmond;
+$secondary-color: plum;
+
+body {
+  font-size: 15px;
+  color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #2d0922;
+  background-size: 100%;
+  position: relative;
+  margin: 10px;
+
+  .inlineContainer {
+    display: inline-flex;
+  }
+
+  .commandName {
+    color: $secondary-color;
+  }
+
+  .avatar {
+    margin-left: 25px;
+    border-radius: 3px;
+    opacity: 0.7;
+    margin-top: 5%;
+  }
+
+  #terminal {
+    font-family: monospace;
+    color: $primary-color;
+    height: 95%;
+    width: 95%;
+
+    #output {
+      margin-bottom: 10px;
+    }
+
+    #input {
+      font-size: 15px;
+      margin-top: 20px;
+    }
+
+    #prompt {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    #cmd {
+      font-size: 15px;
+      background: transparent;
+      border: none;
+      color: $primary-color;
+      outline: none;
+      transition: caret-color 0.3s ease;
+      width: 70%;
+
+      &:focus {
+        caret-color: $primary-color;
+      }
+    }
+
+    #suggestions {
+      margin-top: 10px;
+      color: $primary-color;
+
+      .selected {
+        color: aqua;
+      }
+    }
+
+    .ownerTerminal {
+      color: rgb(90, 187, 154);
+    }
+
+    @keyframes destroyAnimation {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0.2;
+      }
+    }
+  }
+
+  img {
+    user-select: none;
+  }
+}
