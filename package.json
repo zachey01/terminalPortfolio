@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "npx nodemon",
-    "start": "npx gulp && node build/index"
+    "dev": "npx gulp dev",
+    "start": "npx gulp",
+    "build": "npx gulp build"
   },
   "repository": {
     "type": "git",

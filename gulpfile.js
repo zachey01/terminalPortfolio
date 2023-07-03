@@ -78,8 +78,56 @@ gulp.task('images', () => {
     .pipe(gulp.dest(`${buildDir}/public/img`)); // Output the optimized images
 });
 
+gulp.task('server', () => {
+  nodemon({
+    script: 'build/index.js',
+  });
+});
+
+// Watch for file changes
+gulp.task('watch', () => {
+  gulp.watch('src/public/js/*.js', gulp.series('scripts'));
+  gulp.watch('src/public/style/*.scss', gulp.series('styles'));
+  gulp.watch('src/views/*.ejs', gulp.series('ejsViews'));
+  gulp.watch('src/partials/*.ejs', gulp.series('ejsPartials'));
+  gulp.watch('src/public/img/*', gulp.series('images'));
+  gulp.watch('.env', gulp.series('copyEnv'));
+  gulp.watch('app.js', gulp.series('express'));
+  gulp.watch('build/index.js', gulp.series('server'));
+});
+
+// Default task
+gulp.task(
+  'dev',
+  gulp.series(
+    'scripts',
+    'styles',
+    'ejsViews',
+    'ejsPartials',
+    'images',
+    'express',
+    'copyEnv',
+    'server',
+    'watch'
+  )
+);
+
 gulp.task(
   'default',
+  gulp.series(
+    'scripts',
+    'styles',
+    'ejsViews',
+    'ejsPartials',
+    'images',
+    'express',
+    'copyEnv',
+    'server'
+  )
+);
+
+gulp.task(
+  'build',
   gulp.series(
     'scripts',
     'styles',
