@@ -9,4 +9,5 @@
 ## Installation
 
 1. `npm i`
-2. `npm run start`
+2. rename `.env.example` to `.env`
+3. `npm run start`
