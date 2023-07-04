@@ -3,6 +3,7 @@ $secondary-color: plum;
 
 .projectsDiv {
   display: inline-flex;
+  margin-top: 20px;
 }
 
 .article-wrapper {
@@ -16,7 +17,7 @@ $secondary-color: plum;
   background-color: $primary-color;
 
   &:hover {
-    box-shadow: 10px 10px 0 $secondary-color, 20px 20px 0 $secondary-color;
+    box-shadow: 10px 10px 0 rgb(90, 187, 154), 20px 20px 0 $secondary-color;
     border-color: #2d0922;
     transform: translate(-20px, -20px);
   }
