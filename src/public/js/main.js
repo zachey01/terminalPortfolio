@@ -1,9 +1,9 @@
-var currentSuggestionIndex = -1;
+let currentSuggestionIndex = -1;
 
 function showSuggestions() {
-  var cmdInput = document.getElementById('cmd');
-  var input = cmdInput.value.trim();
-  var suggestionsDiv = document.getElementById('suggestions');
+  let cmdInput = document.getElementById('cmd');
+  let input = cmdInput.value.trim();
+  let suggestionsDiv = document.getElementById('suggestions');
   suggestionsDiv.innerHTML = '';
 
   if (input === '') {
@@ -11,12 +11,12 @@ function showSuggestions() {
     return;
   }
 
-  var filteredSuggestions = suggestions.filter(function (suggestion) {
+  let filteredSuggestions = suggestions.filter(function (suggestion) {
     return suggestion.startsWith(input);
   });
 
   filteredSuggestions.forEach(function (suggestion, index) {
-    var suggestionDiv = document.createElement('div');
+    let suggestionDiv = document.createElement('div');
     suggestionDiv.textContent = suggestion;
     suggestionDiv.addEventListener('click', function () {
       cmdInput.value = suggestion;
@@ -34,8 +34,8 @@ function showSuggestions() {
 }
 
 function handleKeyDown(event) {
-  var suggestionsDiv = document.getElementById('suggestions');
-  var suggestionDivs = suggestionsDiv.getElementsByTagName('div');
+  let suggestionsDiv = document.getElementById('suggestions');
+  let suggestionDivs = suggestionsDiv.getElementsByTagName('div');
 
   if (event.key === 'ArrowUp') {
     event.preventDefault();
@@ -48,8 +48,8 @@ function handleKeyDown(event) {
       currentSuggestionIndex++;
     }
   } else if (event.key === 'Enter') {
-    var cmdInput = document.getElementById('cmd');
-    var selectedSuggestion = suggestionDivs[currentSuggestionIndex];
+    let cmdInput = document.getElementById('cmd');
+    let selectedSuggestion = suggestionDivs[currentSuggestionIndex];
     if (selectedSuggestion) {
       cmdInput.value = selectedSuggestion.textContent;
     }
@@ -57,8 +57,8 @@ function handleKeyDown(event) {
     cmdInput.classList.remove('command-entered');
   }
 
-  for (var i = 0; i < suggestionDivs.length; i++) {
-    var suggestionDiv = suggestionDivs[i];
+  for (let i = 0; i < suggestionDivs.length; i++) {
+    let suggestionDiv = suggestionDivs[i];
     if (i === currentSuggestionIndex) {
       suggestionDiv.classList.add('selected');
     } else {
