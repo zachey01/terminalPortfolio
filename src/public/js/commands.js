@@ -49,7 +49,41 @@ window.addEventListener('DOMContentLoaded', function () {
       else if (cmd === 'projects' || cmd === 'pj') {
         outputDiv.innerHTML += projectCmd;
       } else if (cmd === 'blog') {
-        window.location.href = '/blog'; // Redirect to blog page
+        let postList = [];
+        let postTitles = [];
+        let postDates = [];
+        let postLinks = [];
+        let postImages = [];
+
+        fetch('https://mediumpostsapi.vercel.app/api/bjzachey')
+          .then((response) => response.json())
+          .then((data) => {
+            data.dataMedium.forEach((post) => {
+              postList.push(post);
+              postTitles.push(post.title);
+              postDates.push(post.date);
+              postLinks.push(post.link);
+              postImages.push(post.image);
+            });
+
+            postList.forEach((post) => {
+              const blogDiv = document.getElementById('blogDiv');
+              const postDiv = document.createElement('article');
+              postDiv.className = 'blogArticle';
+              postDiv.onclick = () => linkHref(post.link);
+              postDiv.style.display = 'inline-block';
+              postDiv.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <p>📅: ${post.date}</p>
+                      `;
+              blogDiv.appendChild(postDiv);
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        outputDiv.innerHTML += '<div id="blogDiv"></div>';
       }
 
       // Other

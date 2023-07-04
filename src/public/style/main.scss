@@ -26,9 +26,9 @@ body {
 
   .avatar {
     margin-left: -25px;
-    border-radius: 3px;
-    opacity: 0.7;
+    opacity: 0.8;
     width: 155px;
+    pointer-events: none;
     height: 155px;
   }
 

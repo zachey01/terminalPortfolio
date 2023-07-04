@@ -142,3 +142,9 @@ let projectCmd = `
 
 </div>
 `;
+
+let blogCmd = `
+<div class="blogArticle" id="blogArticles">
+
+</div>
+`;

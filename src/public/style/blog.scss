@@ -1,0 +1,19 @@
+$borderColor: plum;
+$borderColorHover: #5e5e5e;
+
+.blogArticle {
+  border: 2px solid $borderColor;
+  border-radius: 10px;
+  max-width: 400px;
+  max-height: 350px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0.5em 0em $borderColorHover;
+    border-color: $borderColorHover;
+    color: antiquewhite;
+  }
+}
