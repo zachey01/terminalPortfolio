@@ -6,9 +6,10 @@
   <body>
     <div id="terminal">
       <div id="output">
-        <h1><%= message %></h1>
-        <h2><%= error.status %></h2>
-        <pre><%= error.stack %></pre>
+        <div class="inlineContainer">
+          <h1 class="nameErr"><%= message %></h1>
+        </div>
+        <pre class="descErr"><%= error.stack %></pre>
       </div>
     </div>
   </body>
