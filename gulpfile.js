@@ -87,20 +87,33 @@ gulp.task('clean', () => {
 });
 
 gulp.task('server', (done) => {
-  nodemon({
+  const server = nodemon({
     script: 'build/index.js',
-  }).on('start', done); // Add a callback to execute a task
+  });
+
+  server.on('start', () => {
+    // Execute other tasks once the server has started
+    gulp.series('watch')(done);
+  });
+
+  // Restart the server when other files change
+  server.on('restart', () => {
+    // Execute other tasks on server restart
+    gulp.series('watch')(done);
+  });
 });
 
 // Watch for file changes
 gulp.task('watch', () => {
   gulp.watch('src/public/js/*.js', gulp.series('scripts'));
+  gulp.watch('src/public/js/*.js', gulp.series('clean'));
   gulp.watch('src/public/style/*.scss', gulp.series('styles'));
+  gulp.watch('src/public/style/*.scss', gulp.series('clean'));
   gulp.watch('src/views/*.ejs', gulp.series('ejsViews'));
   gulp.watch('src/partials/*.ejs', gulp.series('ejsPartials'));
   gulp.watch('src/public/img/*', gulp.series('images'));
   gulp.watch('.env', gulp.series('copyEnv'));
-  gulp.watch('app.js', gulp.series('express'));
+  gulp.watch('./app.js', gulp.series('express'));
 });
 
 gulp.task(
