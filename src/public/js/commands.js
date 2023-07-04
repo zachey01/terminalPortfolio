@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       // Pages
       else if (cmd === 'projects' || cmd === 'pj') {
-        window.location.href = '/projects'; // Redirect to projects page
+        outputDiv.innerHTML += projectCmd;
       } else if (cmd === 'blog') {
         window.location.href = '/blog'; // Redirect to blog page
       }
