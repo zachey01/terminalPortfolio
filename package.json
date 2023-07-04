@@ -24,6 +24,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.36.1",
     "child_process": "^1.0.2",
+    "del": "^7.0.0",
     "fs-extra": "^11.1.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",

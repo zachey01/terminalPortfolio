@@ -11,6 +11,7 @@ import ignore from 'gulp-ignore';
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
 import { exec } from 'child_process';
+import { deleteAsync } from 'del';
 
 const sass = gulpSass(dartSass);
 
@@ -20,23 +21,23 @@ const srcDir = './src';
 // Process SCSS files and compile to CSS
 gulp.task('styles', () => {
   return gulp
-    .src(`${srcDir}/public/style/*.scss`) // Выбираем все файлы SCSS
+    .src(`${srcDir}/public/style/*.scss`) // Select all SCSS files
     .pipe(sass().on('error', sass.logError)) // Compile SCSS to CSS
     .pipe(postcss([autoprefixer])) // Apply autoprefixer
     .pipe(cleancss()) // Minify CSS
-    .pipe(concat('main.css')) // Объединяем все CSS файлы в один файл
+    .pipe(concat('main.css')) // Concatenate all CSS files into one file
     .pipe(gulp.dest(`${buildDir}/public/style`)) // Output the final CSS file
-    .pipe(ignore('**/*.scss')); // Исключаем исходные файлы SCSS из копирования
+    .pipe(ignore('**/*.scss')); // Exclude the source SCSS files from copying
 });
 
 // Concatenate and minify JS files
 gulp.task('scripts', () => {
   return gulp
-    .src(`${srcDir}/public/js/*.js`) // Выбираем все файлы JS
-    .pipe(concat('bundle.js')) // Объединяем все JS файлы в один файл
+    .src(`${srcDir}/public/js/*.js`) // Select all JS files
+    .pipe(concat('bundle.js')) // Concatenate all JS files into one file
     .pipe(uglify()) // Minify JS
     .pipe(gulp.dest(`${buildDir}/public/js`)) // Output the final JS file
-    .pipe(ignore('**/*.js')); // Исключаем исходные файлы JS из копирования
+    .pipe(ignore('**/*.js')); // Exclude the source JS files from copying
 });
 
 gulp.task('copyEnv', () => {
@@ -80,10 +81,15 @@ gulp.task('images', () => {
     .pipe(gulp.dest(`${buildDir}/public/img`)); // Output the optimized images
 });
 
+gulp.task('clean', () => {
+  deleteAsync(['build/public/js/*', '!build/public/js/bundle.js']),
+    deleteAsync(['build/public/style/*', '!build/public/style/main.css']);
+});
+
 gulp.task('server', (done) => {
   nodemon({
     script: 'build/index.js',
-  }).on('start', done); // Добавляем обратный вызов для выполнения задачи
+  }).on('start', done); // Add a callback to execute a task
 });
 
 // Watch for file changes
@@ -97,7 +103,6 @@ gulp.task('watch', () => {
   gulp.watch('app.js', gulp.series('express'));
 });
 
-// Default task
 gulp.task(
   'dev',
   gulp.series(
@@ -109,6 +114,7 @@ gulp.task(
     'express',
     'copyEnv',
     'server',
+    'clean',
     'watch'
   )
 );
@@ -123,6 +129,7 @@ gulp.task(
     'images',
     'express',
     'copyEnv',
+    'clean',
     'server'
   )
 );
@@ -136,6 +143,7 @@ gulp.task(
     'ejsPartials',
     'images',
     'express',
+    'clean',
     'copyEnv'
   )
 );
