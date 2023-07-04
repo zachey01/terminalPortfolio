@@ -1,4 +1,18 @@
-var suggestions = ['help', 'skills', 'clear', 'projects'];
+var suggestions = [
+  'help',
+  'skills',
+  'clear',
+  'projects',
+  'blog',
+  'tools',
+  /* Links */
+  'github',
+  'telegram',
+  'discord',
+  'email',
+  'steam',
+  'youtube',
+];
 
 window.addEventListener('DOMContentLoaded', function () {
   var cmdInput = document.getElementById('cmd');
