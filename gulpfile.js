@@ -46,7 +46,7 @@ gulp.task('copyEnv', () => {
 
 gulp.task('express', (done) => {
   exec(
-    'npx ncc build app.js -o build -m',
+    'npx ncc build app.js -o build -m -C',
     { encoding: 'utf8' },
     (error, stdout, stderr) => {
       if (error) {
@@ -81,9 +81,13 @@ gulp.task('images', () => {
     .pipe(gulp.dest(`${buildDir}/public/img`)); // Output the optimized images
 });
 
-gulp.task('clean', () => {
-  deleteAsync(['build/public/js/*', '!build/public/js/bundle.js']),
-    deleteAsync(['build/public/style/*', '!build/public/style/main.css']);
+gulp.task('clean', async () => {
+  await deleteAsync(['build/public/js/*', '!build/public/js/bundle.js']),
+    await deleteAsync(['build/public/style/*', '!build/public/style/main.css']);
+});
+
+gulp.task('delDir', async () => {
+  await deleteAsync(['build/']);
 });
 
 gulp.task('server', (done) => {
@@ -93,13 +97,13 @@ gulp.task('server', (done) => {
 
   server.on('start', () => {
     // Execute other tasks once the server has started
-    gulp.series('watch')(done);
+    gulp.series('watch', 'clean')(done);
   });
 
   // Restart the server when other files change
   server.on('restart', () => {
     // Execute other tasks on server restart
-    gulp.series('watch')(done);
+    gulp.series('watch', 'clean')(done);
   });
 });
 
@@ -119,6 +123,7 @@ gulp.task('watch', () => {
 gulp.task(
   'dev',
   gulp.series(
+    'delDir',
     'scripts',
     'styles',
     'ejsViews',
@@ -135,6 +140,7 @@ gulp.task(
 gulp.task(
   'default',
   gulp.series(
+    'delDir',
     'scripts',
     'styles',
     'ejsViews',
@@ -150,6 +156,7 @@ gulp.task(
 gulp.task(
   'build',
   gulp.series(
+    'delDir',
     'scripts',
     'styles',
     'ejsViews',

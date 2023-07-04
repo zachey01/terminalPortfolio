@@ -66,3 +66,7 @@ function handleKeyDown(event) {
     }
   }
 }
+
+function linkHref(href) {
+  window.location.href = href;
+}
